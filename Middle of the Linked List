@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int get_size(ListNode* node){
+        int cnt = 0;
+        while(node != NULL){
+            cnt++;
+            node = node->next;
+        }
+        return cnt;
+    }
+    ListNode* middleNode(ListNode* head) {
+        int sz = get_size(head);
+        ListNode* tmp = head;
+        int cnt = 0;
+        while(cnt < sz / 2){
+            cnt++;
+            tmp = tmp->next;
+        }
+        return tmp;
+    }
+};
