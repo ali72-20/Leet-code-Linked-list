@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int getSize(ListNode* head){
+        int sz = 0;
+        ListNode* tempHead = head;
+        while(tempHead->next != nullptr){
+            sz++;
+            tempHead = tempHead->next;
+        }
+        return sz + 1;
+    }
+    ListNode* deleteMiddle(ListNode* head) {
+        int cnt = 0;
+        ListNode* temp = head;
+        int mid = getSize(head) / 2;
+        if(mid == 0){
+            head = NULL;
+            return head;
+        }
+        while(cnt + 1 != mid){
+            cnt++;
+            temp = temp->next;
+        }
+        ListNode* del = temp->next;
+        if(del->next != NULL){
+            temp->next = del->next;
+         }else{
+            temp->next = nullptr;
+        }
+        delete(del);
+        return head;
+    }
+}
